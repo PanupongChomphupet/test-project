@@ -9,11 +9,10 @@ const mongo = require("mongodb").MongoClient;
 const bcrypt = require('bcrypt');
 const fileUpload = require("express-fileupload");
 const jwt = require('jsonwebtoken');
-const e = require("express");
-const { FiRewind } = require("react-icons/fi");
-const { send } = require("process");
 const { Storage } = require("@google-cloud/storage");
 const fs = require("fs");
+const http = require("http");
+const https = require("https");
 
 const gc = new Storage({
     keyFilename: __dirname + "/wii-pilates-316414-b8d3b57d750c.json",
@@ -28,6 +27,11 @@ app.use(fileUpload({
     useTempFiles: true,
     tempFileDir: path.join(__dirname, './tmp'),
 }))
+
+app.use(express.static(path.join(__dirname + "/../build/")))
+app.use(express.static(path.join(__dirname + "/../build/static")))
+app.use(express.static(path.join(__dirname + "/../build/static/css")))
+app.use(express.static(path.join(__dirname + "/../build/static/js")))
 
 function date() {
     const date = new Date()
@@ -791,8 +795,13 @@ mongo.connect("mongodb://localhost:27017", { useUnifiedTopology: true }, (err, d
         })
     })
 
+    app.get("*", (req, res)=>{
+        res.sendFile(path.join(__dirname + "/../build/index.html"));
+    })
 })
 
-app.listen(5000, () => {
-    console.log("> App on port 5000");
-})
+const httpServer = http.createServer(app);
+const  httpsServer = https.createServer(app);
+
+httpServer.listen(5000, ()=>console.log("> Http on port 5000"));
+httpsServer.listen(5001, ()=>console.log("> Https on port 5001"));
