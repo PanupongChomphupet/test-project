@@ -38,8 +38,6 @@ function Navber(props) {
         }else {
             ppath()
         }
-        
-        
         document.getElementById("myLinks").style.display = 'none'
     }
 

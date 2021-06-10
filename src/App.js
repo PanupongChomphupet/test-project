@@ -6,7 +6,6 @@ import Profile from './page/Profile'
 import Home from './page/Home'
 import Detail from './page/Detail'
 import Pay from './page/Payment';
-import Bill from './page/Bill';
 import Dasborad from './page/Dasborad';
 import Selectlevel from './page/Selectlevel';
 import Videoplay from './page/Videoplay';
@@ -91,9 +90,6 @@ function App() {
         </Route>
         <Route path="/payment/:price">
           <Pay />
-        </Route>
-        <Route path="/bill">
-          <Bill />
         </Route>
         <Route path="/dasborad">
           <Dasborad />
