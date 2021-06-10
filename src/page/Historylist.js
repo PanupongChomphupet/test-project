@@ -13,7 +13,7 @@ function Historylist() {
         const token = localStorage.getItem("token");
         axios({
             method: "post",
-            url: "http://localhost:5000/history",
+            url: "http://wii-pilates.com/history",
             headers: { "Content-Type": "application/json" },
             data: JSON.stringify({token})
         }).then(res => {

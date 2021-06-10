@@ -17,7 +17,7 @@ function Addcouse() {
         const token = localStorage.getItem("token");
         axios({
             method: 'POST',
-            url: 'http://localhost:5000/check-status',
+            url: 'http://wii-pilates.com/check-status',
             headers: { "Content-Type": "application/json" },
             data: JSON.stringify({ token })
         }).then(res => {
@@ -40,7 +40,7 @@ function Addcouse() {
 
         axios({
             method: "POST",
-            url: "http://localhost:5000/insertcouse",
+            url: "http://wii-pilates.com/insertcouse",
             headers: { "Content-Type": "application/json" },
             data: formData
         }).then(res => {

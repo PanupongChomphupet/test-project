@@ -14,7 +14,7 @@ function Profile() {
     useEffect(() => {
         const token = localStorage.getItem("token");
         axios({
-            url: "http://localhost:5000/dataprofile",
+            url: "http://wii-pilates.com/dataprofile",
             method: "POST",
             headers: { "Content-Type": "application/json" },
             data: JSON.stringify({ token })

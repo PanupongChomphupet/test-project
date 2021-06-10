@@ -11,7 +11,7 @@ function Videoplay() {
     useEffect(() => {
         axios({
             method: 'POST',
-            url: 'http://localhost:5000/video',
+            url: 'http://wii-pilates.com/video',
             headers: { "Content-Type": "application/json" },
             data: JSON.stringify({
                 id,

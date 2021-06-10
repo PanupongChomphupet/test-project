@@ -17,7 +17,7 @@ function Datauser() {
         const token = localStorage.getItem("token");
         axios({
             method: 'POST',
-            url: 'http://localhost:5000/check-status',
+            url: 'http://wii-pilates.com/check-status',
             headers: { "Content-Type": "application/json" },
             data: JSON.stringify({ token })
         }).then(res => {
@@ -30,7 +30,7 @@ function Datauser() {
     useEffect(() => {
         axios({
             method: "POST",
-            url: `http://localhost:5000/datauser/${id}`
+            url: `http://wii-pilates.com/datauser/${id}`
         }).then(res => {
             setuser(res.data.datae)
         })
@@ -39,7 +39,7 @@ function Datauser() {
     useEffect(() => {
         axios({
             method: "POST",
-            url: `http://localhost:5000/databill/${id}/${idcouse}`,
+            url: `http://wii-pilates.com/databill/${id}/${idcouse}`,
             headers: { "Content-Type": "application/json" },
             data: JSON.stringify({})
         }).then(res => {
@@ -58,7 +58,7 @@ function Datauser() {
     function approve() {
         axios({
             method: "POST",
-            url: 'http://localhost:5000/approve',
+            url: 'http://wii-pilates.com/approve',
             headers: { "Content-Type": "application/json" },
             data: JSON.stringify({
                 id,
@@ -81,7 +81,7 @@ function Datauser() {
     function deletedata() {
         axios({
             method: "POST",
-            url: 'http://localhost:5000/deletebill',
+            url: 'http://wii-pilates.com/deletebill',
             headers: { "Content-Type": "application/json" },
             data: JSON.stringify({
                 id,

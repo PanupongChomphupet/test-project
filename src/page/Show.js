@@ -6,7 +6,7 @@ function Show() {
     useEffect(() => {
         axios({
             method: "GET",
-            url: "http://localhost:5000/course",
+            url: "http://wii-pilates.com/course",
             headers: { "Content-Type": "application/json" }
         }).then(res => {
             setdata(res.data.cos)

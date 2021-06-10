@@ -10,7 +10,7 @@ function Selectlevel() {
     const history = useHistory()
     useEffect(() => {
         axios({
-            url: `http://localhost:5000/billlevel/${id}`,
+            url: `http://wii-pilates.com/billlevel/${id}`,
             method: "POST",
             headers: { "Content-Type": "application/json" },
             data: JSON.stringify({
@@ -18,15 +18,29 @@ function Selectlevel() {
             }),
         }).then(res => {
             setlevel(res.data.level)
+            /* let arr = []
+            res.data.level.level.forEach((item, index) => {
+                arr.push({item})
+                if (index == res.data.level.level.length - 1) {
+                    arr.sort((a, b) => (a.level > b.level) ? 1 : ((b.level > a.level) ? -1 : 0))
+                    arr.reverse();
+                    setlevel(arr)
+                }
+            }); */
         })
     }, [])
-    console.log (level)
+    /* useEffect (() => {
+        level.item.forEach(item => {
+            console.log (item)
+        })
+    }, []) */
+    
     return (
         <div className={styles.bg_level}>
             <div className={styles.content}>
                 <h2>เลือกเลเวล</h2>
                 <div className={styles.border} />
-                {level.level ? level.level.filter(e => e.approve).map((item, index) =>
+                {level.item ? level.item.filter(e => e.approve).map((item, index) =>
                     <div key = {index}>
                         <div onClick={() => history.push(`/video/${id}/${item.level}`)} className={styles.level}>
                             <div className={styles.a}>เลเวลที่ : {item.level}. {item.name}</div>

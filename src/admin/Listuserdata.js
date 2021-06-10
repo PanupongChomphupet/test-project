@@ -13,7 +13,7 @@ function Listuserdata() {
         const token = localStorage.getItem("token");
         axios({
             method: 'POST',
-            url: 'http://localhost:5000/check-status',
+            url: 'http://wii-pilates.com/check-status',
             headers: { "Content-Type": "application/json" },
             data: JSON.stringify({ token })
         }).then(res => {
@@ -26,7 +26,7 @@ function Listuserdata() {
     useEffect(() => {
         axios({
             method: "GET",
-            url: "http://localhost:5000/userdata",
+            url: "http://wii-pilates.com/userdata",
             headers: { "Content-Type": "application/json" }
         }).then(res => {
             setuser(res.data.user)
@@ -55,7 +55,6 @@ function Listuserdata() {
                         });
                     })
                 }
-                
                 if (index == user.length - 1) {
                     arr.sort((a, b) => (a.Bill.date > b.Bill.date) ? 1 : ((b.Bill.date > a.Bill.date) ? -1 : 0))
                     arr.sort((a, b) => (a.Bill.time > b.Bill.time && a.Bill.date == b.Bill.date) ? 1 : (a.Bill.time < b.Bill.time && a.Bill.date == b.Bill.date ? -1 : 0))

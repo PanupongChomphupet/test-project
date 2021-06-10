@@ -12,7 +12,7 @@ function Datacouse() {
         const token = localStorage.getItem("token");
         axios({
             method: 'POST',
-            url: 'http://localhost:5000/check-status',
+            url: 'http://wii-pilates.com/check-status',
             headers: { "Content-Type": "application/json" },
             data: JSON.stringify({ token })
         }).then(res => {
@@ -21,10 +21,11 @@ function Datacouse() {
             }
         })
     }
+
     useEffect(() => {
         axios({
             method: "GET",
-            url: `http://localhost:5000/couseone/${id}`,
+            url: `http://wii-pilates.com/couseone/${id}`,
             headers: { "Content-Type": "application/json" },
             data: JSON.stringify({})
         }).then(res => {
@@ -37,7 +38,7 @@ function Datacouse() {
     function deletelevel(level, id) {
         axios({
             method: "post",
-            url: "http://localhost:5000/removelevel",
+            url: "http://wii-pilates.com/removelevel",
             headers: { "Content-Type": "application/json" },
             data: JSON.stringify({ level, id })
         }).then(res => {

@@ -12,7 +12,7 @@ function Updatedate() {
     const token = localStorage.getItem("token");
     axios({
       method: "post",
-      url: "http://localhost:5000/dataprofile",
+      url: "http://wii-pilates.com/dataprofile",
       headers: { "Content-Type": "application/json" },
       data: JSON.stringify({ token })
     }).then(res => {
@@ -48,7 +48,7 @@ function Updatedate() {
 
     axios({
       method: "POST",
-      url: "http://localhost:5000/updateprofile",
+      url: "http://wii-pilates.com/updateprofile",
       headers: { "Content-Type": "application/json" },
       data: formData
     }).then(res => {

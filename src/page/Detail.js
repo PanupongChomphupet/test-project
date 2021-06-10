@@ -37,7 +37,7 @@ function Detail() {
     useEffect(() => {
         axios({
             method: "GET",
-            url: `http://localhost:5000/detail/${id}`
+            url: `http://wii-pilates.com/detail/${id}`
         }).then(res => {
             setcourse(res.data.cours);
             setLevel(res.data.level);
@@ -47,7 +47,7 @@ function Detail() {
     useEffect(() => {
         axios({
             method: "post",
-            url: 'http://localhost:5000/billlevel',
+            url: 'http://wii-pilates.com/billlevel',
             headers: { "Content-Type": "application/json" },
             data: JSON.stringify({ token })
         }).then(res => {

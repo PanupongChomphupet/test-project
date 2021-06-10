@@ -10,7 +10,7 @@ function Dassborad() {
     function loadpage() {
         axios({
             method: "GET",
-            url: "http://localhost:5000/course",
+            url: "http://wii-pilates.com/course",
             headers: { "Content-Type": "application/json" }
         }).then(res => {
             setitemcouse(res.data.cos)
@@ -21,7 +21,7 @@ function Dassborad() {
         const token = localStorage.getItem("token");
         axios ({
             method : 'POST',
-            url : 'http://localhost:5000/check-status',
+            url : 'http://wii-pilates.com/check-status',
             headers: { "Content-Type": "application/json" },
             data: JSON.stringify({ token })
         }).then( res => {
@@ -40,7 +40,7 @@ function Dassborad() {
         const id = ids;
         axios({
             method: "POST",
-            url: "http://localhost:5000/deletecouse",
+            url: "http://wii-pilates.com/deletecouse",
             headers: { "Content-Type": "application/json" },
             data: JSON.stringify({ id })
         }).then(res => {

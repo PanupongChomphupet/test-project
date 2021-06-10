@@ -28,7 +28,7 @@ function Addlevel() {
         const token = localStorage.getItem("token");
         axios({
             method: 'POST',
-            url: 'http://localhost:5000/check-status',
+            url: 'http://wii-pilates.com/check-status',
             headers: { "Content-Type": "application/json" },
             data: JSON.stringify({ token })
         }).then(res => {
@@ -41,7 +41,7 @@ function Addlevel() {
     useEffect(() => {
         axios({
             method: "GET",
-            url: "http://localhost:5000/listcouse",
+            url: "http://wii-pilates.com/listcouse",
             headers: { "Content-Type": "application/json" }
         }).then(res => {
             let arr = []
@@ -59,7 +59,7 @@ function Addlevel() {
         setid(id)
         axios({
             method: "post",
-            url: "http://localhost:5000/cousenoe",
+            url: "http://wii-pilates.com/cousenoe",
             headers: { "Content-Type": "application/json" },
             data: JSON.stringify({ id })
         }).then(res => {
@@ -91,7 +91,7 @@ function Addlevel() {
                 if (i == video.length - 1) {
                     axios({
                         method: "POST",
-                        url: "http://localhost:5000/addlevel",
+                        url: "http://wii-pilates.com/addlevel",
                         headers: { "Content-Type": "multipary/form-data" },
                         data: formdata,
                         onUploadProgress: (e) => {
@@ -123,7 +123,7 @@ function Addlevel() {
         }else {
             axios({
                 method: "POST",
-                url: "http://localhost:5000/addlevel",
+                url: "http://wii-pilates.com/addlevel",
                 headers: { "Content-Type": "multipary/form-data" },
                 data: formdata,
             }).then(res => {
@@ -176,18 +176,3 @@ function Addlevel() {
     )
 }
 export default Addlevel;
-
-{/* <div className={styles.addlevel}>
-                <p className={styles.addvel}>เพิ่มเลเวลใหม่</p>
-                <div className={styles.icon}>
-                    <a onClick={addlevels}><GrAddCircle /></a>
-                    <a onClick={deletecouse}><IoMdRemoveCircleOutline /></a>
-                </div>
-            </div> */}
-{/* <div className={styles.level}>
-                <p className={styles.leveltext}>เลเวล :<text> dwasdw </text></p>
-                <div className={styles.btnadd}>
-                    <button className={styles.btnb}>เพิ่มข้อมูล</button>
-                </div>
-
-            </div> */}
