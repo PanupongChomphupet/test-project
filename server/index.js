@@ -48,7 +48,7 @@ function date() {
     }
 }
 
-mongo.connect("mongodb://localhost:27017", { useUnifiedTopology: true }, (err, db) => {
+mongo.connect("mongodb://mongo:27017", { useUnifiedTopology: true }, (err, db) => {
     if (err) throw err;
     var dbcon = db.db("userdata");
 
@@ -138,6 +138,8 @@ mongo.connect("mongodb://localhost:27017", { useUnifiedTopology: true }, (err, d
 
     app.post('/check-login', (req, res) => {
         const { token } = req.body;
+	    
+	    try{
         jwt.verify(token, 'dc7fea65a4w2s3w4a5w5w5f6g4r5y2f0', function (err, decoded) {
             if (err) throw err;
             dbcon.collection("user").findOne({ _id: ObjectId(decoded._id) }, { projection: { Bill: 0, password: 0 } }, (err, result) => {
@@ -149,6 +151,9 @@ mongo.connect("mongodb://localhost:27017", { useUnifiedTopology: true }, (err, d
                 })
             })
         })
+	    } catch(e){
+		    console.log(e);
+	    }
     })
 
     app.get("/course", (req, res) => {
@@ -408,6 +413,7 @@ mongo.connect("mongodb://localhost:27017", { useUnifiedTopology: true }, (err, d
 
     app.post('/addlevel', async (req, res) => {
         const { name, level, id, price } = req.body
+	    console.log("here");
         if (name && level && id && price && req.files) {
             const { videos } = req.files
             async function mvFile(i) {
@@ -798,10 +804,10 @@ mongo.connect("mongodb://localhost:27017", { useUnifiedTopology: true }, (err, d
     app.get("*", (req, res)=>{
         res.sendFile(path.join(__dirname + "/../build/index.html"));
     })
+
+	const httpServer = http.createServer(app);
+	const httpsServer = https.createServer(app);
+
+	httpServer.listen(5000, ()=>console.log("> Http on port 5000"));
+	httpsServer.listen(5001, ()=>console.log("> Https on port 5001"));
 })
-
-const httpServer = http.createServer(app);
-const  httpsServer = https.createServer(app);
-
-httpServer.listen(5000, ()=>console.log("> Http on port 5000"));
-httpsServer.listen(5001, ()=>console.log("> Https on port 5001"));
